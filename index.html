@@ -5,54 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>스무 살, 나의 세상이 열리다</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&family=Pretendard:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600;800&family=Noto+Sans+KR:wght@300;400;700;900&family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        html {
+            scroll-behavior: smooth; /* CSS 레벨에서의 부드러운 스크롤 */
+        }
         body {
-            font-family: 'Pretendard', sans-serif;
-            scroll-behavior: smooth;
+            font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
         }
         .serif {
-            font-family: 'Noto+Serif+KR', serif;
+            font-family: 'Playfair Display', 'Noto Serif KR', serif;
         }
-        .bg-dream-gradient {
-            background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+        /* 고딕 폰트 스타일 정의 */
+        .gothic {
+            font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
+            letter-spacing: -0.02em;
         }
         .fade-in {
             animation: fadeIn 2s ease-out;
         }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
         .floating {
-            animation: floating 3s ease-in-out infinite;
+            animation: floating 4s ease-in-out infinite;
         }
         @keyframes floating {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-15px); }
             100% { transform: translateY(0px); }
+        }
+        .image-overlay {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.7));
         }
     </style>
 </head>
 <body class="bg-stone-50 text-stone-800">
 
     <!-- Hero Section -->
-    <header class="relative h-screen flex items-center justify-center overflow-hidden bg-dream-gradient">
-        <div class="absolute inset-0 opacity-40">
-            <!--  -->
-            <div class="w-full h-full bg-[url('https://images.unsplash.com/photo-1499002238440-d264edd596ec?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')] bg-cover bg-center"></div>
+    <header class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="w-full h-full bg-[url('https://images.unsplash.com/photo-1499002238440-d264edd596ec?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')] bg-cover bg-center transition-transform duration-1000 hover:scale-105"></div>
+            <div class="absolute inset-0 image-overlay"></div>
         </div>
+        
         <div class="relative z-10 text-center px-4 fade-in">
-            <span class="text-sm tracking-[0.3em] text-stone-500 mb-4 block uppercase font-light">The Beginning of 20s</span>
-            <h1 class="serif text-5xl md:text-7xl font-bold text-stone-900 mb-6 leading-tight">
-                스무 살, <br>나의 세상이 열리다
+            <span class="text-sm tracking-[0.5em] text-stone-200 mb-6 block uppercase font-light">The Beginning of 20s</span>
+            <!-- 제목 폰트를 고딕(gothic)으로 변경 및 두께 강화 -->
+            <h1 class="gothic text-6xl md:text-8xl font-black text-white mb-8 leading-tight drop-shadow-2xl">
+                스무 살, <br><span class="text-amber-300">나의 세상</span>이 열리다
             </h1>
-            <p class="text-lg md:text-xl text-stone-600 max-w-2xl mx-auto leading-relaxed font-light">
+            <p class="text-lg md:text-2xl text-stone-100 max-w-2xl mx-auto leading-relaxed font-normal drop-shadow-md">
                 익숙한 문을 닫고, 한 번도 가보지 않은 길 위에 섭니다.<br>
                 이제 나의 꿈은 지도가 되고, 나의 용기는 나침반이 될 것입니다.
             </p>
-            <div class="mt-12">
-                <a href="#journey" class="inline-block px-8 py-4 border border-stone-400 text-stone-600 hover:bg-stone-900 hover:text-white hover:border-stone-900 transition-all duration-300 tracking-widest text-sm">
+            <div class="mt-16">
+                <a href="#journey" id="scroll-btn" class="inline-block px-10 py-4 border-2 border-white text-white hover:bg-white hover:text-stone-900 transition-all duration-500 tracking-[0.2em] text-sm font-bold uppercase">
                     여정 시작하기
                 </a>
             </div>
@@ -60,95 +69,109 @@
     </header>
 
     <!-- Content Section: The Journey -->
-    <section id="journey" class="py-24 px-6 md:px-12 lg:px-24 max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <div class="relative">
-                <div class="rounded-2xl overflow-hidden shadow-2xl">
-                    <!--  -->
-                    <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="New Journey" class="w-full h-auto transform hover:scale-105 transition-duration-700">
+    <section id="journey" class="py-32 px-6 md:px-12 lg:px-24 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+            <div class="relative group">
+                <div class="rounded-2xl overflow-hidden shadow-2xl bg-black">
+                    <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="New Journey" class="w-full h-auto transform group-hover:scale-110 transition-transform duration-1000 opacity-90 group-hover:opacity-100">
                 </div>
-                <div class="absolute -bottom-6 -right-6 bg-white p-8 shadow-xl hidden md:block">
-                    <p class="serif italic text-2xl text-stone-400">"Fly Higher"</p>
+                <div class="absolute -bottom-8 -right-8 bg-stone-900 p-10 shadow-2xl hidden md:block transition-transform duration-500 group-hover:-translate-x-4">
+                    <p class="serif italic text-3xl text-amber-200">"Fly Higher"</p>
                 </div>
             </div>
-            <div class="space-y-6">
-                <h2 class="serif text-4xl text-stone-900">세상이라는 넓은 도화지</h2>
-                <p class="text-stone-600 leading-loose text-lg">
+            <div class="space-y-8">
+                <h2 class="gothic text-5xl font-bold text-stone-900 leading-tight">세상이라는 <br>넓은 도화지</h2>
+                <p class="text-stone-600 leading-loose text-xl font-light">
                     어제까지의 나는 보호받는 어린새였지만, 오늘부터 나는 내 하늘을 책임지는 비행사가 됩니다. 실수할 수도 있고, 길을 잃을 수도 있겠죠. 하지만 그 모든 발자국이 나의 이야기가 되고, 그 모든 상처가 나의 훈장이 될 것임을 믿습니다.
                 </p>
-                <div class="pt-4 flex items-center space-x-4">
-                    <div class="w-12 h-[1px] bg-stone-400"></div>
-                    <span class="text-stone-400 text-sm font-light">꿈을 향한 첫 번째 발걸음</span>
+                <div class="pt-6 flex items-center space-x-6">
+                    <div class="w-20 h-[1px] bg-stone-400"></div>
+                    <span class="text-stone-400 text-sm tracking-widest font-light uppercase">Dreamer's First Step</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Dreams: Three Pillars -->
-    <section class="bg-stone-100 py-24">
+    <section class="bg-stone-900 py-32 text-white">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="serif text-4xl text-stone-900 mb-4">내가 펼쳐나갈 세 가지 꿈</h2>
-                <p class="text-stone-500">진정으로 나답게 살아가는 법을 배우려 합니다.</p>
+            <div class="text-center mb-24">
+                <h2 class="gothic text-5xl font-bold mb-6">내가 펼쳐나갈 세 가지 꿈</h2>
+                <p class="text-stone-400 tracking-widest uppercase text-sm">Learning, Loving, and Venturing</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
                 <!-- Card 1 -->
-                <div class="bg-white p-10 rounded-sm shadow-sm hover:shadow-xl transition-shadow duration-300">
-                    <div class="w-12 h-12 bg-amber-50 rounded-full flex items-center justify-center mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                <div class="group border border-stone-800 p-12 rounded-lg hover:bg-stone-800 transition-all duration-500">
+                    <div class="w-16 h-16 bg-amber-500/10 rounded-full flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                         </svg>
                     </div>
-                    <h3 class="serif text-xl mb-4 font-bold">배움의 열정</h3>
-                    <p class="text-stone-500 leading-relaxed">세상의 지식뿐만 아니라 사람의 마음을 읽고 공감하는 법을 배우며, 멈추지 않고 성장하겠습니다.</p>
+                    <h3 class="gothic text-2xl mb-6 font-bold text-amber-200">배움의 열정</h3>
+                    <p class="text-stone-400 leading-relaxed text-lg font-light">세상의 지식뿐만 아니라 사람의 마음을 읽고 공감하는 법을 배우며, 멈추지 않고 성장하겠습니다.</p>
                 </div>
                 <!-- Card 2 -->
-                <div class="bg-white p-10 rounded-sm shadow-sm hover:shadow-xl transition-shadow duration-300">
-                    <div class="w-12 h-12 bg-rose-50 rounded-full flex items-center justify-center mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-rose-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                <div class="group border border-stone-800 p-12 rounded-lg hover:bg-stone-800 transition-all duration-500">
+                    <div class="w-16 h-16 bg-rose-500/10 rounded-full flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-rose-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                         </svg>
                     </div>
-                    <h3 class="serif text-xl mb-4 font-bold">사랑과 연대</h3>
-                    <p class="text-stone-500 leading-relaxed">나 혼자 잘사는 것이 아니라, 주변을 밝히는 따뜻한 빛이 되어 누군가에게 기댈 수 있는 나무가 되겠습니다.</p>
+                    <h3 class="gothic text-2xl mb-6 font-bold text-rose-300">사랑과 연대</h3>
+                    <p class="text-stone-400 leading-relaxed text-lg font-light">나 혼자 잘사는 것이 아니라, 주변을 밝히는 따뜻한 빛이 되어 누군가에게 기댈 수 있는 나무가 되겠습니다.</p>
                 </div>
                 <!-- Card 3 -->
-                <div class="bg-white p-10 rounded-sm shadow-sm hover:shadow-xl transition-shadow duration-300">
-                    <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <div class="group border border-stone-800 p-12 rounded-lg hover:bg-stone-800 transition-all duration-500">
+                    <div class="w-16 h-16 bg-blue-500/10 rounded-full flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                     </div>
-                    <h3 class="serif text-xl mb-4 font-bold">모험하는 용기</h3>
-                    <p class="text-stone-500 leading-relaxed">익숙한 편안함에 안주하지 않고, 낯선 환경에서도 당당하게 나만의 가치를 증명하는 모험가가 되겠습니다.</p>
+                    <h3 class="gothic text-2xl mb-6 font-bold text-blue-300">모험하는 용기</h3>
+                    <p class="text-stone-400 leading-relaxed text-lg font-light">익숙한 편안함에 안주하지 않고, 낯선 환경에서도 당당하게 나만의 가치를 증명하는 모험가가 되겠습니다.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Quote Section -->
-    <section class="py-32 px-6 text-center bg-white">
-        <div class="max-w-4xl mx-auto">
-            <span class="text-6xl text-stone-200 serif">"</span>
-            <blockquote class="serif text-3xl md:text-4xl text-stone-800 leading-relaxed mb-8">
+    <section class="py-40 px-6 text-center bg-white relative overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 opacity-5 gothic font-black text-[20rem] pointer-events-none">20</div>
+        <div class="max-w-4xl mx-auto relative z-10">
+            <span class="text-7xl text-amber-200 serif block mb-8">"</span>
+            <blockquote class="gothic text-4xl md:text-5xl font-bold text-stone-800 leading-tight mb-12">
                 너는 아직 피지 않은 꽃일 뿐이야.<br>
-                머지않아 너만의 색깔로 온 세상을 물들이게 될 거야.
+                머지않아 너만의 색깔로 <br><span class="underline decoration-amber-300 underline-offset-8">온 세상을 물들이게 될 거야.</span>
             </blockquote>
-            <p class="text-stone-400 font-light tracking-widest">— 스무 살의 나에게 보내는 편지</p>
+            <p class="text-stone-400 font-light tracking-[0.3em] uppercase text-sm">— Letter to my 20-year-old self</p>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-stone-900 text-stone-400 py-16 px-6 text-center">
-        <div class="mb-8 floating">
-             <!--  -->
-             <svg class="w-10 h-10 mx-auto opacity-70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M12 3L14.5 8.5L20.5 9.5L16 14L17.5 20.5L12 17.5L6.5 20.5L8 14L3.5 9.5L9.5 8.5L12 3Z" fill="white" />
+    <footer class="bg-stone-950 text-stone-500 py-24 px-6 text-center border-t border-stone-900">
+        <div class="mb-10 floating">
+             <svg class="w-12 h-12 mx-auto text-amber-200 opacity-80" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 3L14.5 8.5L20.5 9.5L16 14L17.5 20.5L12 17.5L6.5 20.5L8 14L3.5 9.5L9.5 8.5L12 3Z" />
              </svg>
         </div>
-        <p class="serif text-white text-lg mb-2">당신의 스무 살을 응원합니다.</p>
-        <p class="text-sm font-light">© 2026 Dream Journey. All Rights Reserved.</p>
+        <p class="gothic font-bold text-white text-2xl mb-4 tracking-wider">당신의 찬란한 시작을 응원합니다.</p>
+        <p class="text-xs font-light tracking-[0.2em] uppercase">© 2026 Dream Journey. Designed for the Future.</p>
     </footer>
+
+    <script>
+        // 자바스크립트를 이용한 부드러운 스크롤 보완
+        document.getElementById('scroll-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    </script>
 
 </body>
 </html>
