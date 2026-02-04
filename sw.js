@@ -4,7 +4,7 @@ const ASSETS = [
   '/index.html',
   '/style.css',
   '/main.js',
-  '/icon/parkjiwoo_logo.png'
+  '/icons/parkjiwoo_logo.png'
 ];
 
 // 설치 시 리소스 캐싱
