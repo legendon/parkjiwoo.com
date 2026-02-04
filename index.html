@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>스무 살, 나의 세상이 열리다</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="manifest" href="/manifest.json">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600;800&family=Noto+Sans+KR:wght@300;400;700;900&family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet">
     <style>
         html {
@@ -172,6 +173,12 @@
             }
         });
     </script>
-
+    <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js')
+        .then(() => console.log("PWA 서비스 워커 등록 완료!"))
+        .catch((err) => console.log("등록 실패:", err));
+    }
+  </script>
 </body>
 </html>
