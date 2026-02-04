@@ -1,10 +1,10 @@
 {
-  "name": "박지우닷컴",
-  "short_name": "지우닷",
-  "start_url": "/",
+  "name": "Park Jiwoo Official",
+  "short_name": "Jiwoo",
+  "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#000000",
+  "theme_color": "#6366F1",
   "icons": [
     {
       "src": "/icons/parkjiwoo_logo.png",
